@@ -5,6 +5,7 @@ sap.ui.define([
 
     return Controller.extend("nwproducts.controller.Main", {
         onInit() {
+            sap.m.MessageToast.show("Welcome to SAP Fiori World!");
         }
     });
 });

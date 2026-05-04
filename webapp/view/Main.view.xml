@@ -2,5 +2,33 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
+    <!-- create a table control  -->
+    <Table id="idProductsTable" items="{/Products}">
+        <headerToolbar>
+            <Toolbar>
+                <Title text="{i18n>productList}" />
+            </Toolbar>
+        </headerToolbar>
+        <columns>
+            <Column>
+                <Text text="{i18n>productID}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>productName}" />
+            </Column>
+            <Column>
+                <Text text="{i18n>price}" />
+            </Column>
+        </columns>
+        <items>
+            <ColumnListItem>
+                <cells>
+                    <Text text="{ProductID}" />
+                    <Text text="{ProductName}" />
+                    <Text text="{UnitPrice}" />
+                </cells>
+            </ColumnListItem>
+        </items>
+        </Table>
     </Page>
 </mvc:View>
