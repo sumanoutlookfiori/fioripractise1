@@ -2,11 +2,29 @@
     xmlns:mvc="sap.ui.core.mvc"
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
+     <Panel id="idpanel1"  expand="_showData" headerText="Shipper Data" expandable="true" expanded="false" >
+            <content>
+                <VBox >
+                <Text text="{be>/CompanyName}" />               
+                <Text text="{be>/Phone}" />
+                </VBox>
+            </content>
+        </Panel>
+
     <!-- create a table control  -->
-    <Table id="idProductsTable" items="{/Products}">
+    <Table id="idProductsTable" 
+    items="{
+    path : 'prod>/',
+    parameters : {       
+        expand : 'Supplier'
+      
+    }
+    
+    }">
         <headerToolbar>
             <Toolbar>
                 <Title text="{i18n>productList}" />
+                <Button text="Get Data" press="fetchData" />
             </Toolbar>
         </headerToolbar>
         <columns>
@@ -19,16 +37,21 @@
             <Column>
                 <Text text="{i18n>price}" />
             </Column>
+             <Column>
+                <Text text="CompanyName" />
+            </Column>
         </columns>
         <items>
             <ColumnListItem>
                 <cells>
-                    <Text text="{ProductID}" />
-                    <Text text="{ProductName}" />
-                    <Text text="{UnitPrice}" />
+                    <Text text="{prod>ProductID}" />
+                    <Text text="{prod>ProductName}" />
+                    <Text text="{prod>UnitPrice}" />
+                    <Text text="{prod>Supplier/CompanyName}" />
                 </cells>
             </ColumnListItem>
         </items>
         </Table>
+        
     </Page>
 </mvc:View>
